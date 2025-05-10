@@ -31,7 +31,7 @@ You can of course redirect a file or more complicated pipeline into
 $ echo 3 | summarize-ranges
 Range 1: 3
 
-$ echo 3 4 5 | summarize-ranges --human
+$ echo 3 4 5 | summarize-ranges
 Range 1: 3 to 5
 
 # TAB-separated output:
