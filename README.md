@@ -47,7 +47,7 @@ $ echo 3 5 | summarize-ranges
 Range 1: 3
 Range 2: 5
 
-echo some text 3 more 4 text and 6, 7, 8. | summarize-ranges
+$ echo some text 3 more 4 text and 6, 7, 8. | summarize-ranges
 Range 1: 3 to 4
 Range 2: 6 to 8
 
