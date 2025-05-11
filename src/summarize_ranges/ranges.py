@@ -6,6 +6,15 @@ from typing import Iterator, Tuple
 class RangeSummarizer:
     """
     Examine text for integers and provide a method to summarize the contiguous ranges.
+
+    @param initial_text: Text to examine immediately (instead of requiring it to be
+        passed to the add() function.
+    @param match_negatives: Look for hyphens before strings of digits so that negative
+        numbers are identified. Note that if this is False, a string containing "abc-34"
+        will result in the number 34 being collected. There is currently no way to
+        completely ignore negative numbers.
+    @param require_word_boundaries: Only collect numbers that do not appear as part of
+        a word. So "abc34def" will not collect 34 unless False is passed for this option.
     """
 
     def __init__(
@@ -28,7 +37,7 @@ class RangeSummarizer:
 
     def add(self, text: str) -> None:
         """
-        Extract numbers from the text and add them to self.
+        Extract numbers from the given text and add them to self.
         """
         for match in self.regex.finditer(text):
             number = int(match.group(0))
@@ -36,6 +45,12 @@ class RangeSummarizer:
 
     def ranges(self) -> Iterator[Tuple[int, int]]:
         """
+        Return a generator that yields (low, high) tuples of integers
+        indicating ranges of integers that have been seen in the provided
+        text so far. Ranges are given according to the Python closed-open
+        convention (the low value is included in the range, the high value is
+        not). Ranges are yielded in increasing order of the tuple 'low'
+        values.
         """
         numbers = set(self.numbers)
         while numbers:

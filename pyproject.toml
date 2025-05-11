@@ -1,6 +1,6 @@
 [project]
 name = "summarize-ranges"
-version = "0.1.0"
+version = "0.1.1"
 description = "Summarize contiguous ranges of integers found on standard input."
 readme = "README.md"
 authors = [
